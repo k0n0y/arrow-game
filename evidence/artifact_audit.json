@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checked_text_files": 33,
+  "blog_images_resolved": 8,
+  "automated_tests": 44,
+  "source_windows_startup": "passed",
+  "exe_windows_startup": "passed",
+  "student_personal_playtest": "awaiting student",
+  "github_publication": "not completed",
+  "blog_publication": "not completed",
+  "class_submission": "not completed"
+}

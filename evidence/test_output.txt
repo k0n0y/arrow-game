@@ -1,0 +1,55 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- <PROJECT_ROOT>\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: <PROJECT_ROOT>
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 44 items
+
+tests/test_logic.py::test_T01_clear_path_all_directions[board0-pos0] PASSED [  2%]
+tests/test_logic.py::test_T01_clear_path_all_directions[board1-pos1] PASSED [  4%]
+tests/test_logic.py::test_T01_clear_path_all_directions[board2-pos2] PASSED [  6%]
+tests/test_logic.py::test_T01_clear_path_all_directions[board3-pos3] PASSED [  9%]
+tests/test_logic.py::test_T02_distant_obstacle_all_directions[board0-pos0] PASSED [ 11%]
+tests/test_logic.py::test_T02_distant_obstacle_all_directions[board1-pos1] PASSED [ 13%]
+tests/test_logic.py::test_T02_distant_obstacle_all_directions[board2-pos2] PASSED [ 15%]
+tests/test_logic.py::test_T02_distant_obstacle_all_directions[board3-pos3] PASSED [ 18%]
+tests/test_logic.py::test_T03_outward_edge[board0-pos0] PASSED           [ 20%]
+tests/test_logic.py::test_T03_outward_edge[board1-pos1] PASSED           [ 22%]
+tests/test_logic.py::test_T03_outward_edge[board2-pos2] PASSED           [ 25%]
+tests/test_logic.py::test_T03_outward_edge[board3-pos3] PASSED           [ 27%]
+tests/test_logic.py::test_T02_lives_decrement_without_removal PASSED     [ 29%]
+tests/test_logic.py::test_T04_win_next_and_final PASSED                  [ 31%]
+tests/test_logic.py::test_T05_failure_freezes_board_and_retry PASSED     [ 34%]
+tests/test_logic.py::test_T06_restart_restores_current_level_and_template PASSED [ 36%]
+tests/test_logic.py::test_empty_and_invalid_click_do_not_cost_lives[pos0] PASSED [ 38%]
+tests/test_logic.py::test_empty_and_invalid_click_do_not_cost_lives[pos1] PASSED [ 40%]
+tests/test_logic.py::test_empty_and_invalid_click_do_not_cost_lives[pos2] PASSED [ 43%]
+tests/test_logic.py::test_empty_and_invalid_click_do_not_cost_lives[pos3] PASSED [ 45%]
+tests/test_logic.py::test_empty_and_invalid_click_do_not_cost_lives[pos4] PASSED [ 47%]
+tests/test_logic.py::test_menu_and_midgame_cannot_advance PASSED         [ 50%]
+tests/test_logic.py::test_empty_and_single_cell_board PASSED             [ 52%]
+tests/test_logic.py::test_reject_invalid_level_data[board0] PASSED       [ 54%]
+tests/test_logic.py::test_reject_invalid_level_data[board1] PASSED       [ 56%]
+tests/test_logic.py::test_reject_invalid_level_data[board2] PASSED       [ 59%]
+tests/test_logic.py::test_reject_invalid_level_data[board3] PASSED       [ 61%]
+tests/test_logic.py::test_deadlock_and_non_mutation PASSED               [ 63%]
+tests/test_logic.py::test_all_official_levels_have_four_directions_and_solution PASSED [ 65%]
+tests/test_logic.py::test_generated_levels_solvable[4-11] PASSED         [ 68%]
+tests/test_logic.py::test_generated_levels_solvable[5-18] PASSED         [ 70%]
+tests/test_logic.py::test_generated_levels_solvable[6-27] PASSED         [ 72%]
+tests/test_logic.py::test_all_625_two_by_two_boards_against_independent_search PASSED [ 75%]
+tests/test_ui.py::test_ui_T01_fly_animation_and_input_lock PASSED        [ 77%]
+tests/test_ui.py::test_ui_T02_collision_feedback PASSED                  [ 79%]
+tests/test_ui.py::test_ui_T03_outward_edge_removes_without_index_error[cell0] PASSED [ 81%]
+tests/test_ui.py::test_ui_T03_outward_edge_removes_without_index_error[cell1] PASSED [ 84%]
+tests/test_ui.py::test_ui_T03_outward_edge_removes_without_index_error[cell2] PASSED [ 86%]
+tests/test_ui.py::test_ui_T03_outward_edge_removes_without_index_error[cell3] PASSED [ 88%]
+tests/test_ui.py::test_ui_T04_all_three_levels_through_mouse PASSED      [ 90%]
+tests/test_ui.py::test_ui_T05_failure_retry_and_T06_restart PASSED       [ 93%]
+tests/test_ui.py::test_ui_hint_menu_gaps_and_borders PASSED              [ 95%]
+tests/test_ui.py::test_ui_duplicate_events_after_page_change PASSED      [ 97%]
+tests/test_ui.py::test_ui_quit PASSED                                    [100%]
+
+---------- generated xml file: <PROJECT_ROOT>\evidence\tests.xml -----------
+============================= 44 passed in 1.26s ==============================

@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "driver": "windows",
+  "pygame": "2.5.8",
+  "python": "3.13.15",
+  "screen": [
+    1180,
+    820
+  ],
+  "font": "C:\\WINDOWS\\Fonts\\msyh.ttc",
+  "levels": 3,
+  "state": "playing",
+  "frozen": false
+}

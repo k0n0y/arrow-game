@@ -1,0 +1,67 @@
+165 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.7
+165 INFO: Python: 3.13.15
+200 INFO: Platform: Windows-11-10.0.26200-SP0
+200 INFO: Python environment: D:\软件工程\ArrowGame\.venv
+201 INFO: wrote D:\软件工程\ArrowGame\ArrowGame.spec
+206 INFO: Module search paths (PYTHONPATH):
+['D:\\软件工程\\ArrowGame',
+ 'C:\\Users\\曾\\AppData\\Local\\Programs\\Python\\Python313\\python313.zip',
+ 'C:\\Users\\曾\\AppData\\Local\\Programs\\Python\\Python313\\DLLs',
+ 'C:\\Users\\曾\\AppData\\Local\\Programs\\Python\\Python313\\Lib',
+ 'C:\\Users\\曾\\AppData\\Local\\Programs\\Python\\Python313',
+ 'D:\\软件工程\\ArrowGame\\.venv',
+ 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages',
+ 'D:\\软件工程\\ArrowGame']
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.13.15)
+577 INFO: checking Analysis
+580 INFO: Building because D:\软件工程\ArrowGame\ArrowGame.py changed
+580 INFO: Looking for Python shared library...
+580 INFO: Using Python shared library: C:\Users\曾\AppData\Local\Programs\Python\Python313\python313.dll
+580 INFO: Running Analysis Analysis-00.toc
+580 INFO: Target bytecode optimization level: 0
+580 INFO: Initializing module dependency graph...
+582 INFO: Initializing module graph hook caches...
+593 INFO: Analyzing modules for base_library.zip ...
+1954 INFO: Processing standard module hook 'hook-encodings.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+2400 INFO: Processing standard module hook 'hook-math.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+2573 INFO: Processing standard module hook 'hook-heapq.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+3465 INFO: Processing standard module hook 'hook-pickle.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4538 INFO: Caching module dependency graph...
+4582 INFO: Analyzing D:\软件工程\ArrowGame\ArrowGame.py
+4628 INFO: Processing standard module hook 'hook-pygame.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\pygame\\__pyinstaller'
+4731 INFO: Processing standard module hook 'hook-platform.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4757 INFO: Processing standard module hook 'hook-sysconfig.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4762 INFO: Processing standard module hook 'hook-_ctypes.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4802 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+4803 INFO: SetuptoolsInfo: initializing cached setuptools info...
+5579 INFO: Processing standard module hook 'hook-difflib.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+5638 INFO: Processing module hooks (post-graph stage)...
+5641 INFO: Performing binary vs. data reclassification (19 entries)
+5653 INFO: Looking for ctypes DLLs
+5666 INFO: Analyzing run-time hooks ...
+5667 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+5673 INFO: Creating base_library.zip...
+5688 INFO: Looking for dynamic libraries
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.13.15)
+5873 INFO: Extra DLL search directories (AddDllDirectory): ['D:\\软件工程\\ArrowGame\\.venv\\Lib\\site-packages\\pygame']
+5874 INFO: Extra DLL search directories (PATH): []
+6445 INFO: Warnings written to D:\软件工程\ArrowGame\build\ArrowGame\warn-ArrowGame.txt
+6455 INFO: Graph cross-reference written to D:\软件工程\ArrowGame\build\ArrowGame\xref-ArrowGame.html
+6467 INFO: checking PYZ
+6485 INFO: checking PKG
+6487 INFO: Building because toc changed
+6487 INFO: Building PKG (CArchive) ArrowGame.pkg
+9340 INFO: Building PKG (CArchive) ArrowGame.pkg completed successfully.
+9343 INFO: Bootloader D:\软件工程\ArrowGame\.venv\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\runw.exe
+9343 INFO: checking EXE
+9344 INFO: Building because toc changed
+9344 INFO: Building EXE from EXE-00.toc
+9345 INFO: Copying bootloader EXE to D:\软件工程\ArrowGame\dist\ArrowGame.exe
+9350 INFO: Copying icon to EXE
+9354 INFO: Copying 0 resources to EXE
+9354 INFO: Embedding manifest in EXE
+9357 INFO: Appending PKG archive to EXE
+9368 INFO: Fixing EXE headers
+9456 INFO: Building EXE from EXE-00.toc completed successfully.
+9460 INFO: Build complete! The results are available in: D:\软件工程\ArrowGame\dist
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.13.15)

@@ -1,0 +1,333 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>一箭又一箭 · 作业博客预览</title>
+<style>
+body{font-family:'Microsoft YaHei',system-ui,sans-serif;margin:0;background:#f1f4f5;color:#20303b;line-height:1.8}
+main{max-width:940px;margin:35px auto;padding:48px;background:white;border-radius:18px}
+h1{font-size:32px;line-height:1.4}h2{border-top:1px solid #e1e7ea;padding-top:28px;margin-top:42px}h3{margin-top:28px}
+a{color:#117866}img{display:block;max-width:100%;height:auto;margin:20px auto;border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}td,th{border:1px solid #d8e1e5;padding:9px;text-align:left}th{background:#edf5f2}
+pre{background:#15232e;color:#e2eee9;padding:20px;border-radius:12px;overflow:auto;line-height:1.6}
+code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;border-left:4px solid #17836e;background:#edf7f3}
+@media(max-width:700px){main{margin:0;padding:22px;border-radius:0}table{display:block;overflow:auto}h1{font-size:26px}}
+@media print{body{background:white}main{margin:0;padding:0}img{max-height:650px;object-fit:contain}pre{white-space:pre-wrap}h2,h3{break-after:avoid}}
+</style></head><body><main><h1 id="python-codex">一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏</h1>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>这个作业属于哪个课程</td>
+<td><a href="https://edu.cnblogs.com/campus/fzu/2026-01SoftwareEngineeringandSoftwareEngineeringPractice">2026-01 软件工程与软件工程实践</a></td>
+</tr>
+<tr>
+<td>这个作业要求在哪里</td>
+<td><a href="https://edu.cnblogs.com/campus/fzu/2026-01SoftwareEngineeringandSoftwareEngineeringPractice/homework/16718">个人作业（二）：一箭又一箭</a></td>
+</tr>
+<tr>
+<td>这个作业的目标</td>
+<td>使用 Python 和 AIGC 完成“一箭又一箭”小游戏，验证规则、记录开发过程并使用 Git 管理项目</td>
+</tr>
+<tr>
+<td>学号</td>
+<td>102401314</td>
+</tr>
+<tr>
+<td>GitHub 仓库</td>
+<td>待发布后填写真实仓库地址</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>本稿记录本次 Codex 辅助开发及本地验证结果。发布前需本人试玩、填写真实 PSP 时间，并补充仓库链接和个人心得；不将自动化验证写成本人试玩。</p>
+</blockquote>
+<h2 id="_1">一、项目展示</h2>
+<p>本项目采用 Python + pygame-ce，实现基础单格箭头玩法。所有界面元素、箭头和关卡均由本项目代码生成，不使用原商业游戏素材。</p>
+<h3 id="1">1. 开始界面</h3>
+<p>开始页面展示规则入口、开始按钮及三关选择。可从第一关开始，也可直接选择关卡练习。</p>
+<p><img alt="开始界面" src="images/01_menu.png" /></p>
+<h3 id="2">2. 游戏与碰撞反馈</h3>
+<p>游戏界面显示当前关卡、棋盘、剩余箭头、剩余失误次数、本关用时、提示和重开按钮。</p>
+<p><img alt="游戏界面" src="images/02_playing.png" /></p>
+<p>下面的向下箭头前方有其他箭头，即使相邻格为空也不能飞出。误点后原箭头保留、格子变红并晃动，机会由 3 次变为 2 次。</p>
+<p><img alt="碰撞反馈" src="images/03_collision.png" /></p>
+<p>路径畅通时播放飞出动画，箭头数量减一。</p>
+<p><img alt="成功飞出后的棋盘" src="images/05_removed.png" /></p>
+<h3 id="3">3. 失败、通关与完成</h3>
+<p><img alt="失败与重试" src="images/06_failed.png" /></p>
+<p><img alt="当前关卡通过" src="images/07_level_clear.png" /></p>
+<p><img alt="全部通关" src="images/10_all_clear.png" /></p>
+<h3 id="4-gif">4. 演示 GIF</h3>
+<p><img alt="操作演示" src="images/demo.gif" /></p>
+<p>以上为实际 pygame 程序通过脚本投递鼠标事件后的渲染结果。GIF 对部分中间操作进行了省略并调整播放节奏，界面计时来自模拟步长，不作为个人试玩速度或开发耗时。</p>
+<h2 id="_2">二、项目简介</h2>
+<h3 id="_3">游戏规则</h3>
+<ol>
+<li>棋盘由网格组成，每个格子为空或包含上下左右之一的箭头。</li>
+<li>点击箭头后沿自身方向检查，直到棋盘边缘。</li>
+<li>没有其他箭头阻挡时，当前箭头飞出并消除；有阻挡时保留并扣一次机会。</li>
+<li>每关初始有 3 次机会，耗尽后失败；清空棋盘后通关。</li>
+<li>重开恢复当前关卡的初始棋盘和全部机会。</li>
+</ol>
+<h3 id="_4">关卡和界面设计</h3>
+<table>
+<thead>
+<tr>
+<th>关卡</th>
+<th>名称</th>
+<th>大小</th>
+<th style="text-align: right;">箭头数量</th>
+<th style="text-align: right;">初始可消除箭头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>初见方向</td>
+<td>4×4</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>交错之间</td>
+<td>5×5</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>顺序的答案</td>
+<td>6×6</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">13</td>
+</tr>
+</tbody>
+</table>
+<p>每关均包含四种方向。关卡规模逐步增大；难度感受还需要结合本人试玩评价。界面采用深色背景和不同颜色箭头，右侧集中展示规则、进度和反馈。</p>
+<h3 id="_5">主要功能和扩展</h3>
+<p>基础功能覆盖开始、点击消除、碰撞、三次失误、通关、失败、下一关和重开。扩展包括选关、提示高亮、本关计时和 Windows 可执行版。
+提示只通过确定性规则查找当前可消除箭头，没有在线调用大模型。图形与逻辑解耦，方便独立测试。</p>
+<h2 id="_6">三、实现思路</h2>
+<h3 id="_7">数据结构与模块划分</h3>
+<p><code>levels.py</code> 使用字符串元组保存不可变关卡，U/D/L/R 分别表示四方向，<code>.</code> 表示空格。开始游戏时将其复制为二维列表，因此重开不会受到已消除箭头的影响。</p>
+<p><code>game_logic.py</code> 实现路径检测、可解性检查和游戏状态；<code>ArrowGame.py</code> 实现图形、按钮、鼠标命中、动画与计时。测试无需启动实际桌面窗口也能检查核心规则。</p>
+<h3 id="_8">核心路径检测</h3>
+<p>方向通过行列增量统一处理：U=(-1,0)、D=(1,0)、L=(0,-1)、R=(0,1)。从箭头前方第一个格子开始扫描，边界检查在访问数组之前执行。</p>
+<p>以下代码摘自本项目实际实现：</p>
+<pre><code class="language-python">def first_blocker(board: Board, row: int, col: int) -&gt; tuple[int, int] | None:
+    &quot;&quot;&quot;Return the nearest obstacle on a valid arrow's entire forward ray.&quot;&quot;&quot;
+    if not has_arrow(board, row, col):
+        return None
+    dr, dc = DIRECTIONS[board[row][col]]
+    r, c = row + dr, col + dc
+    while 0 &lt;= r &lt; len(board) and 0 &lt;= c &lt; len(board[0]):
+        if board[r][c] != &quot;.&quot;:
+            return r, c
+        r, c = r + dr, c + dc
+    return None
+</code></pre>
+<p><code>can_exit()</code> 先用 <code>has_arrow()</code> 排除空格和越界，再检查 <code>first_blocker()</code> 是否返回 None。例如 <code>R..U</code> 会找到最右侧的 U，因此不能飞出；<code>R...</code> 可直接离开。
+单次扫描最坏时间为 O(max(R,C))，额外空间为 O(1)。</p>
+<h3 id="_9">可解关卡</h3>
+<p>关卡由逆向插入法构造：每次只加入一支当前能直接飞出的箭头。按相反插入顺序删除，即得到一个合法解序列。最终冻结为三个关卡模板，启动时再次校验。</p>
+<p>还使用 <code>solve()</code> 独立寻找消除顺序。因为删除箭头只会减少障碍，任何当前可执行的消除操作都不会让其他箭头更难离开，所以可以反复删除可消除箭头而不需要回溯。</p>
+<h3 id="_10">状态与动画</h3>
+<p>状态包括 MENU、PLAYING、WON、LOST、COMPLETE。只有 PLAYING 允许操作棋盘；非最后关清空进入 WON，最后关清空进入 COMPLETE；生命为 0 进入 LOST。</p>
+<p>规则立即决定成功或失败，再由界面根据结果播放约 0.48 秒动画。飞出时位置随时间移动；碰撞时沿箭头方向小幅往返并显示红色提示。动画期间屏蔽棋盘重复点击，重开会同时清除动画。</p>
+<h2 id="aigc">四、AIGC 使用过程</h2>
+<p>本次使用 <strong>Codex</strong>。以下四条来自同一任务的不同实际开发阶段，不是事后虚构的独立对话。用户提供需求并纠正来源，初始代码和测试由 AI 辅助实现。</p>
+<table>
+<thead>
+<tr>
+<th>子任务</th>
+<th>AIGC 技术</th>
+<th>AI 提供的内容</th>
+<th>实际效果</th>
+<th>人工参与/修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求澄清</td>
+<td>Codex</td>
+<td>整理 11 项游戏功能、T01—T06 和材料要求，设计模块结构</td>
+<td>明确最初博客为同学示例，正式截图成为验收依据</td>
+<td>用户提供正确链接与 6 张截图</td>
+</tr>
+<tr>
+<td>路径与关卡</td>
+<td>Codex</td>
+<td>四方向整条射线扫描、状态机、逆向构造和独立测试</td>
+<td>首轮 32 项通过；发现第一候选关缺少右箭头后重新筛选</td>
+<td>暂无学生手工代码修改记录，修正由 Codex 执行</td>
+</tr>
+<tr>
+<td>图形与交互</td>
+<td>Codex</td>
+<td>中文界面、飞出与碰撞动画、事件回放测试</td>
+<td>40 项阶段测试通过，三关鼠标事件流程完成</td>
+<td>本人实际试玩待完成</td>
+</tr>
+<tr>
+<td>画面检查和修正</td>
+<td>Codex</td>
+<td>读取程序截图检查布局与图标</td>
+<td>发现勾号变方框，改为线段绘制；最终 44 项测试通过</td>
+<td>不把 AI 修正记作学生手工修正</td>
+</tr>
+</tbody>
+</table>
+<p>原始开发记录见 <code>aigc_log.md</code>。本次明确遇到的问题包括正式页登录拦截、命令行嵌套引号错误、第一候选关方向不全、结果图标缺字；没有沿用他人博客中的调试经历。</p>
+<h2 id="_11">五、测试结果</h2>
+<p>环境：Windows 11 x64、Python 3.13.15、pygame-ce 2.5.8、pytest 9.1.1。</p>
+<p>实际运行：</p>
+<pre><code class="language-powershell">.\.venv\Scripts\python.exe tools/verify.py
+</code></pre>
+<p>最终结果为 <strong>44 passed</strong>，无失败、错误或跳过。</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>操作/测试场景</th>
+<th>预期结果</th>
+<th>实际结果</th>
+<th>是否通过</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T01</td>
+<td>点击前方无遮挡箭头</td>
+<td>飞出并消失，剩余箭头数减 1</td>
+<td>四方向规则正确；事件测试验证删除、飞出动画和输入锁</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>T02</td>
+<td>点击有阻挡的箭头，包括远距离障碍</td>
+<td>箭头保留，失误机会减 1，显示碰撞反馈</td>
+<td>四方向远处障碍均检测；棋盘不变，生命 3→2，红色/晃动反馈</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>T03</td>
+<td>点击边界朝外箭头</td>
+<td>消失且不越界</td>
+<td>上下左右边界的规则和鼠标事件均通过，机会保持 3</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>T04</td>
+<td>消除全部箭头，点击下一关</td>
+<td>显示通关并进入下一关</td>
+<td>三关按顺序通过，第三关显示全部通关</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>T05</td>
+<td>连续三次误点</td>
+<td>失败并可重试</td>
+<td>生命变为 0，停止棋盘操作，重试恢复</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>T06</td>
+<td>游戏中重开当前关</td>
+<td>布局和失误数恢复</td>
+<td>当前关索引保留、原始布局恢复、生命 3、计时/动画/提示清空</td>
+<td>通过</td>
+</tr>
+</tbody>
+</table>
+<p>补充检查包括 625 种 2×2 棋盘的独立算法核对、45 个不同种子生成关卡的完整解序列验证，以及 64 次 pygame 事件回放。源码和打包 EXE 都在本机 Windows SDL 图形驱动中启动成功。</p>
+<p>证据文件：<code>evidence/test_output.txt</code>、<code>test_summary.json</code>、<code>ui_replay.json</code>、<code>source_smoke.json</code>、<code>exe_smoke.json</code>。这些是本地自动验证结果，其他机器兼容性和本人试玩需要单独确认。</p>
+<h2 id="psp">六、PSP 时间记录</h2>
+<p>以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际耗时应由本人按真实参与情况填写；AI 执行时间不等于学生本人开发时间。</p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th style="text-align: right;">预计耗时（小时）</th>
+<th style="text-align: right;">实际耗时（小时）</th>
+<th style="text-align: right;">差异（实际 − 预计）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求分析与游戏设计</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>Python 与图形库学习</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>游戏界面实现</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>路径与碰撞逻辑实现</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>关卡设计</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>AIGC 辅助开发记录</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>测试与修改</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>README 与博客撰写</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">待本人填写</td>
+<td style="text-align: right;">待计算</td>
+</tr>
+<tr>
+<td>合计</td>
+<td style="text-align: right;"><strong>5.25</strong></td>
+<td style="text-align: right;"><strong>待本人填写</strong></td>
+<td style="text-align: right;"><strong>待计算</strong></td>
+</tr>
+</tbody>
+</table>
+<p>“AIGC 辅助开发记录”仅计入查看/整理 AI 使用过程的独立时间，避免与编码和测试重复统计。差异分析需在填入实际值后完成，不能直接套用他人的时间。</p>
+<h2 id="_12">七、心得体会</h2>
+<p>从本次实现可以得到三个具体认识：第一，路径判断中的“检查到边缘”是规则正确性的关键，不能以相邻格为空代替；第二，逻辑与界面分离后，自动化测试可以直接检查规则和状态，事件回放再补充交互验证；第三，逻辑通过不等于显示正确，结果图标缺字就是通过实际画面才发现的问题。</p>
+<p>AIGC 在需求拆分、代码实现、构造测试和整理文档方面提供了帮助；生成结果仍需要证据检验。本项目记录了真实发现和修改，也保留了多次 Git 提交，便于查看各阶段的变化。</p>
+<p><strong>本人补充区（发布前填写）</strong>：实际试玩了哪些关卡、是否使用提示、最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。当前不代写尚未发生的个人体验。</p>
+<h2 id="_13">八、运行与提交说明</h2>
+<p>可执行版双击 <code>ArrowGame.exe</code>。源码版：</p>
+<pre><code class="language-powershell">py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe ArrowGame.py
+</code></pre>
+<p>发布博客时需要将图片上传至博客园并替换本地相对路径；GitHub 发布与班级提交成功状态需另行核验。</p>
+<h3 id="_14">资料与素材说明</h3>
+<ul>
+<li>作业规则来自本文首表中的正式作业页及用户提供的完整截图。</li>
+<li>初始背景参考为 <a href="https://www.cnblogs.com/PIG1/p/23001643">PIG— 的作业博客</a>，未复制其源码、截图或时间记录。</li>
+<li>本项目无外部美术或音效素材；所有箭头、界面图形和关卡由代码生成。系统中文字体只在运行时调用，没有将商业字体文件复制到仓库。</li>
+</ul></main></body></html>
