@@ -338,7 +338,12 @@ class App:
         color = CORAL if lost else TEAL
         self.panel((280, 201, 620, 420), PANEL, 28, LINE)
         pygame.draw.circle(self.screen, "#2D4249", (590, 266), 34)
-        self.text("!" if lost else "✓", (590, 264), 37, color, True, center=True)
+        if lost:
+            pygame.draw.line(self.screen, color, (590, 248), (590, 269), 5)
+            pygame.draw.circle(self.screen, color, (590, 281), 3)
+        else:
+            # Vector check mark: Microsoft YaHei may not contain U+2713.
+            pygame.draw.lines(self.screen, color, False, [(573, 264), (585, 277), (608, 253)], 5)
         title = "挑战失败" if lost else ("全部通关！" if complete else "本关通过！")
         self.text(title, (590, 343), 42, WHITE, True, center=True)
         subtitle = ("机会已经用完，换一个顺序再试一次。" if lost else

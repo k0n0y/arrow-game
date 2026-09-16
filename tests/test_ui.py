@@ -9,7 +9,7 @@ import pygame
 import pytest
 
 from ArrowGame import App
-from game_logic import State, available_moves, can_exit, count_arrows, solve
+from game_logic import Game, Level, State, available_moves, can_exit, count_arrows, solve
 
 
 @pytest.fixture
@@ -56,6 +56,18 @@ def test_ui_T02_collision_feedback(app):
     assert app.effect.kind == "blocked" and app.message_bad
     app.step(.2)
     assert app.effect is not None
+
+
+@pytest.mark.parametrize("cell", [(0, 0), (0, 1), (1, 0), (1, 1)])
+def test_ui_T03_outward_edge_removes_without_index_error(app, cell):
+    app.game = Game([Level("edges", "", ("UR", "LD"))])
+    app.start()
+    app.draw()
+    mouse(app, app.cell_center(*cell))
+    app.step(.6)
+    assert app.game.board[cell[0]][cell[1]] == "."
+    assert count_arrows(app.game.board) == 3
+    assert app.game.lives == 3
 
 
 def test_ui_T04_all_three_levels_through_mouse(app):
