@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest==9.1.1
+pyinstaller==6.22.3
+Markdown==3.10.3
+Pillow>=11,<13

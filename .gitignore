@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+build/
+dist/
+*.spec
+.coverage
+htmlcov/
+.env
+*.log
+*.zip
+*.bundle
+evidence/requirements_screenshots/
