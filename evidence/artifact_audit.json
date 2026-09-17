@@ -1,12 +1,13 @@
 {
   "status": "passed",
-  "checked_text_files": 33,
+  "checked_text_files": 36,
   "blog_images_resolved": 8,
   "automated_tests": 44,
   "source_windows_startup": "passed",
   "exe_windows_startup": "passed",
   "student_personal_playtest": "awaiting student",
-  "github_publication": "not completed",
+  "github_publication": "verified",
+  "github_verified_snapshot": "1162b720f265768588bc6f8cc94516e3b5208610",
   "blog_publication": "not completed",
   "class_submission": "not completed"
 }

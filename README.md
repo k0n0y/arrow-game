@@ -2,19 +2,23 @@
 
 使用 Python + pygame-ce 实现的单格箭头解谜游戏。观察每支箭头前方的整条路径，按合适顺序消除全部箭头。
 
+项目仓库：[k0n0y/arrow-game](https://github.com/k0n0y/arrow-game)。
+
 ![开始界面](docs/images/01_menu.png)
 
 ## 运行
 
 ### Windows 可执行版
 
-在交付压缩包中双击 `ArrowGame.exe`，无需自行安装 Python。适用于 Windows 10/11 x64；已在当前 Windows 11 主机验证启动，其他机器尚未实测。启动器 `RunGame.cmd` 也会优先打开可执行文件。
+下载 [Windows 游戏程序 ArrowGame.exe](https://github.com/k0n0y/arrow-game/raw/refs/heads/main/ArrowGame.exe)，或在交付压缩包中双击 `ArrowGame.exe`，无需自行安装 Python。适用于 Windows 10/11 x64；已在当前 Windows 11 主机验证启动，其他机器尚未实测。启动器 `RunGame.cmd` 也会优先打开可执行文件。
 
 ### 源代码版
 
 开发与验证环境：Windows 11 x64、Python 3.13.15、pygame-ce 2.5.8、pytest 9.1.1。
 
 ```powershell
+git clone https://github.com/k0n0y/arrow-game.git
+cd arrow-game
 py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe ArrowGame.py
@@ -97,6 +101,6 @@ evidence/                  测试日志、事件回放、启动验证
 - 正式要求：用户提供的 6 张截图，对应 [个人作业（二）](https://edu.cnblogs.com/campus/fzu/2026-01SoftwareEngineeringandSoftwareEngineeringPractice/homework/16718)。
 - 背景参考：用户最初提供 [PIG— 的作业博客](https://www.cnblogs.com/PIG1/p/23001643)，用于了解任务背景；未使用其项目源码、图片、PSP 时间或经验描述。
 - 实际 AI 作用、修正与验证：[aigc_log.md](aigc_log.md)。
-- GitHub 远端发布及博客园提交须单独核验，本地完成不代表在线提交成功。
+- GitHub 已发布至 [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game)，原有开发提交历史完整保留；公开文件及图片的核验记录见 `evidence/github_publication.json`（记录的是其中标明的提交快照）。博客园发布和班级作业提交尚未完成。
 
 学生需按正式要求亲自试玩三关、理解代码，并按真实经历补充 PSP 与心得。

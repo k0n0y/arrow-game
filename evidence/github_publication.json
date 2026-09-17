@@ -1,0 +1,80 @@
+{
+  "status": "verified",
+  "verified_at_utc": "2026-09-17T12:50:03.482230+00:00",
+  "repository": "https://github.com/k0n0y/arrow-game",
+  "visibility": "public",
+  "verified_commit": "1162b720f265768588bc6f8cc94516e3b5208610",
+  "commit_count": 5,
+  "original_history_preserved": true,
+  "tracked_files_match": 47,
+  "image_checks": [
+    {
+      "path": "docs/images/01_menu.png",
+      "status": 200,
+      "bytes": 65671,
+      "git_blob_sha": "f3b91c0671d62027c6b4f019b18c341b60692028"
+    },
+    {
+      "path": "docs/images/02_playing.png",
+      "status": 200,
+      "bytes": 67934,
+      "git_blob_sha": "18596f52b874dc4462194c6da8b728c4df7b0a20"
+    },
+    {
+      "path": "docs/images/03_collision.png",
+      "status": 200,
+      "bytes": 67791,
+      "git_blob_sha": "7c56b353f66df35fcfc99e63acdaf2039375e8d9"
+    },
+    {
+      "path": "docs/images/04_flying.png",
+      "status": 200,
+      "bytes": 66848,
+      "git_blob_sha": "11976a24480d9037a8a1f6859ea804cdb6094692"
+    },
+    {
+      "path": "docs/images/05_removed.png",
+      "status": 200,
+      "bytes": 66936,
+      "git_blob_sha": "f0c0deecf3f7f92ac1ca13adc9ae061250a652c6"
+    },
+    {
+      "path": "docs/images/06_failed.png",
+      "status": 200,
+      "bytes": 59783,
+      "git_blob_sha": "048485c54cd378346daa942bac32b2d6b03b2689"
+    },
+    {
+      "path": "docs/images/07_level_clear.png",
+      "status": 200,
+      "bytes": 56012,
+      "git_blob_sha": "77bb4f3e08a59c614ec1672554fdd9620d855c41"
+    },
+    {
+      "path": "docs/images/08_level_2.png",
+      "status": 200,
+      "bytes": 70802,
+      "git_blob_sha": "ce4d85edd1c8b493f8bee1a16a5dd1a654a34905"
+    },
+    {
+      "path": "docs/images/09_level_3.png",
+      "status": 200,
+      "bytes": 72274,
+      "git_blob_sha": "10b4b252accb84e5db9b0e0a7e15ff0c1367637a"
+    },
+    {
+      "path": "docs/images/10_all_clear.png",
+      "status": 200,
+      "bytes": 58239,
+      "git_blob_sha": "c6534825f3c1d743312ffd1a21dd9c7156e7748d"
+    },
+    {
+      "path": "docs/images/demo.gif",
+      "status": 200,
+      "bytes": 686210,
+      "git_blob_sha": "049db9c0eacf536f86af22343ebdb81f885bf047"
+    }
+  ],
+  "blog_publication": "not completed",
+  "class_submission": "not completed"
+}

@@ -6,9 +6,9 @@
 | 这个作业要求在哪里 | [个人作业（二）：一箭又一箭](https://edu.cnblogs.com/campus/fzu/2026-01SoftwareEngineeringandSoftwareEngineeringPractice/homework/16718) |
 | 这个作业的目标 | 使用 Python 和 AIGC 完成“一箭又一箭”小游戏，验证规则、记录开发过程并使用 Git 管理项目 |
 | 学号 | 102401314 |
-| GitHub 仓库 | 待发布后填写真实仓库地址 |
+| GitHub 仓库 | [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game) |
 
-> 本稿记录本次 Codex 辅助开发及本地验证结果。发布前需本人试玩、填写真实 PSP 时间，并补充仓库链接和个人心得；不将自动化验证写成本人试玩。
+> 本稿记录本次 Codex 辅助开发及本地验证结果。发布博客前需本人试玩、填写真实 PSP 时间并补充个人心得；不将自动化验证写成本人试玩。
 
 ## 一、项目展示
 
@@ -190,7 +190,7 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe ArrowGame.py
 ```
 
-发布博客时需要将图片上传至博客园并替换本地相对路径；GitHub 发布与班级提交成功状态需另行核验。
+GitHub 已发布至 [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game)，并保留原有五次开发提交。发布博客时仍需要将图片上传至博客园并替换本地相对路径；博客园发布与班级提交尚未完成。
 
 ### 资料与素材说明
 

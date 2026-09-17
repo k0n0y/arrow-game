@@ -1,5 +1,7 @@
 """Create a reviewed delivery from Git-tracked files, EXE and complete history."""
 
+import argparse
+from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
@@ -8,7 +10,12 @@ import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-DELIVERY = ROOT.parent / "一箭又一箭_作业交付_20260916"
+parser = argparse.ArgumentParser(description="Package a new reviewed delivery without overwriting older copies")
+parser.add_argument("--output-name", default=f"一箭又一箭_作业交付_{datetime.now():%Y%m%d}")
+args = parser.parse_args()
+if Path(args.output_name).name != args.output_name or args.output_name in (".", ".."):
+    raise SystemExit("Use a folder name, not a path")
+DELIVERY = ROOT.parent / args.output_name
 ARCHIVE = DELIVERY.with_suffix(".zip")
 if DELIVERY.exists() or ARCHIVE.exists():
     raise SystemExit("Delivery already exists; inspect it before selecting a new output path")

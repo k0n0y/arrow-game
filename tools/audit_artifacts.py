@@ -38,10 +38,14 @@ for name in ("source_smoke.json", "exe_smoke.json"):
     smoke = json.loads((ROOT / "evidence" / name).read_text(encoding="utf-8"))
     assert smoke["status"] == "ok" and smoke["driver"] == "windows"
 subprocess.run(["git", "diff", "--check"], cwd=ROOT, check=True)
+publication_path = ROOT / "evidence/github_publication.json"
+publication = json.loads(publication_path.read_text(encoding="utf-8")) if publication_path.exists() else {}
 result = {"status": "passed", "checked_text_files": len(checked),
           "blog_images_resolved": len(images.paths), "automated_tests": summary["tests"],
           "source_windows_startup": "passed", "exe_windows_startup": "passed",
-          "student_personal_playtest": "awaiting student", "github_publication": "not completed",
+          "student_personal_playtest": "awaiting student",
+          "github_publication": publication.get("status", "not completed"),
+          "github_verified_snapshot": publication.get("verified_commit"),
           "blog_publication": "not completed", "class_submission": "not completed"}
 (ROOT / "evidence/artifact_audit.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 print(json.dumps(result, ensure_ascii=False, indent=2))
