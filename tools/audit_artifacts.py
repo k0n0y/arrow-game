@@ -1,6 +1,7 @@
 """Check links, result evidence, text encoding and the reviewable file set."""
 
 import json
+import hashlib
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -40,10 +41,17 @@ for name in ("source_smoke.json", "exe_smoke.json"):
 subprocess.run(["git", "diff", "--check"], cwd=ROOT, check=True)
 publication_path = ROOT / "evidence/github_publication.json"
 publication = json.loads(publication_path.read_text(encoding="utf-8")) if publication_path.exists() else {}
+manual = json.loads((ROOT / "evidence/manual_playtest.json").read_text(encoding="utf-8"))
+assert manual["three_levels_cleared"] and [entry["level"] for entry in manual["levels"]] == [1, 2, 3]
+for entry in manual["levels"]:
+    assert hashlib.sha256((ROOT / entry["screenshot"]).read_bytes()).hexdigest() == entry["sha256"]
 result = {"status": "passed", "checked_text_files": len(checked),
           "blog_images_resolved": len(images.paths), "automated_tests": summary["tests"],
           "source_windows_startup": "passed", "exe_windows_startup": "passed",
-          "student_personal_playtest": "awaiting student",
+          "student_personal_playtest": "three level clear screenshots provided",
+          "manual_failure_retry": manual["manual_failure_retry"],
+          "manual_midgame_restart": manual["manual_midgame_restart"],
+          "personal_testing_minutes": manual["personal_testing_minutes"],
           "github_publication": publication.get("status", "not completed"),
           "github_verified_snapshot": publication.get("verified_commit"),
           "blog_publication": "not completed", "class_submission": "not completed"}

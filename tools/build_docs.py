@@ -18,6 +18,18 @@ exe = json.loads((ROOT / "evidence/exe_smoke.json").read_text(encoding="utf-8"))
 replay = json.loads((ROOT / "evidence/ui_replay.json").read_text(encoding="utf-8"))
 assert summary["failures"] == summary["errors"] == summary["skipped"] == 0
 assert source["status"] == exe["status"] == "ok"
+manual = json.loads((ROOT / "evidence/manual_playtest.json").read_text(encoding="utf-8"))
+manual_rows = "\n".join(
+    f"| {item['level']} · {item['name']} | {item['displayed_seconds']} 秒 | {item['clicks']} | {item['hints']} | {item['remaining_lives']}/3 | {'全部通关' if item['result'] == 'all_clear' else '本关通过'} |"
+    for item in manual["levels"]
+)
+manual_table = "| 关卡 | 界面显示用时 | 点击次数 | 提示次数 | 剩余机会 | 界面结果 |\n|---|---:|---:|---:|---|---|\n" + manual_rows
+manual_images = "\n\n".join(
+    f"![本人试玩：第 {item['level']} 关通关截图]({item['screenshot'].removeprefix('docs/')})"
+    for item in manual["levels"]
+)
+manual_note = "三关界面计时合计 38 秒。这不包含启动、阅读规则、重复尝试、截图整理等总用时，不能直接作为 PSP 的测试与修改耗时。"
+manual_confirmation = "本人随后确认：失误机会耗尽后的重新挑战，以及游戏中途重新开始恢复棋盘和 3 次机会，两项测试均正常。本次完整试玩（包括熟悉规则、重试与截图）实际投入约 2 分钟，按本人估算记录。"
 
 test_table = """| 编号 | 操作/测试场景 | 预期结果 | 实际结果 | 是否通过 |
 |---|---|---|---|---|
@@ -30,7 +42,7 @@ test_table = """| 编号 | 操作/测试场景 | 预期结果 | 实际结果 | �
 
 report = f"""# 测试报告
 
-验证日期：2026-09-16。环境：{summary['os']}，Python {summary['python']}，pygame-ce 2.5.8。
+自动化验证日期：2026-09-16。环境：{summary['os']}，Python {summary['python']}，pygame-ce 2.5.8。本人试玩材料收到日期见后文。
 
 `python tools/verify.py` 实际结果：**{summary['tests']} passed**，0 failures / 0 errors / 0 skipped。
 JUnit 记录的测试套件耗时为 {summary['suite_time_seconds']:.3f} 秒；它不等于个人开发耗时。
@@ -56,9 +68,27 @@ JUnit 记录的测试套件耗时为 {summary['suite_time_seconds']:.3f} 秒；�
 - 原始测试输出：`evidence/test_output.txt`；机器可读结果：`tests.xml`、`test_summary.json`。
 - UI 动作与解序列：`evidence/ui_replay.json`。坐标和解序列采用 0 起点。
 - 源码和可执行文件启动：`evidence/source_smoke.json`、`evidence/exe_smoke.json`。
-- 界面截图由同一 pygame 程序在 SDL dummy 显示驱动下经过真实事件回放渲染；不是人工鼠标试玩截图。
+- `docs/images/` 根目录中的截图由同一 pygame 程序在 SDL dummy 显示驱动下经过真实事件回放渲染；本人提供的截图另存于 `docs/images/manual/`。
 - Windows 驱动测试证明本机能启动和绘制。完整流程由自动事件测试验证，尚不证明其他电脑兼容性。
-- 学生本人三关试玩尚未记录，需要按正式要求补充。
+
+## 本人三关试玩记录
+
+用户于 {manual['received_date']} 提供了三张实际游戏窗口截图，分别显示第一关通过、第二关通过和第三关全部通关。此日期为收到材料的日期，截图本身未记录操作日期。原图保持不变，并在 `evidence/manual_playtest.json` 中保存 SHA-256 校验值。
+
+{manual_table}
+
+{manual_images}
+
+{manual_note}
+
+{manual_confirmation}
+
+| 手动检查 | 预期结果 | 本人实际反馈 | 证据形式 |
+|---|---|---|---|
+| T05：失误耗尽后重新挑战 | 失败后可重新挑战 | 已测试，正常 | 本人文字确认 |
+| T06：游戏中途重开 | 棋盘恢复初始布局、机会恢复为 3 | 已测试，正常 | 本人文字确认 |
+
+截图直接支持三个关卡的通关结果、点击次数、提示次数与剩余机会；T05、T06 的手动结果来自本人补充确认。静态结果截图不单独证明动画细节或完整点击过程。
 """
 (ROOT / "docs/test_report.md").write_text(report, encoding="utf-8")
 
@@ -74,7 +104,7 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 | 学号 | 102401314 |
 | GitHub 仓库 | [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game) |
 
-> 本稿记录本次 Codex 辅助开发及本地验证结果。发布博客前需本人试玩、填写真实 PSP 时间并补充个人心得；不将自动化验证写成本人试玩。
+> 本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。本人三关试玩结果已补充；发布博客前仍需填写真实 PSP 时间并补充个人心得。
 
 ## 一、项目展示
 
@@ -113,6 +143,20 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 ![操作演示](images/demo.gif)
 
 以上为实际 pygame 程序通过脚本投递鼠标事件后的渲染结果。GIF 对部分中间操作进行了省略并调整播放节奏，界面计时来自模拟步长，不作为个人试玩速度或开发耗时。
+
+### 5. 本人实际试玩
+
+以下是本人提供的游戏窗口截图，与上方自动回放截图分别保存。材料收到日期为 {manual['received_date']}。
+
+{manual_table}
+
+三关均有通关结果截图，提示次数均为 0。第一关显示剩余 2 次机会，第二、三关各剩余 3 次机会。
+
+{manual_images}
+
+{manual_note}
+
+{manual_confirmation}
 
 ## 二、项目简介
 
@@ -180,7 +224,7 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 |---|---|---|---|---|
 | 需求澄清 | Codex | 整理 11 项游戏功能、T01—T06 和材料要求，设计模块结构 | 明确最初博客为同学示例，正式截图成为验收依据 | 用户提供正确链接与 6 张截图 |
 | 路径与关卡 | Codex | 四方向整条射线扫描、状态机、逆向构造和独立测试 | 首轮 32 项通过；发现第一候选关缺少右箭头后重新筛选 | 暂无学生手工代码修改记录，修正由 Codex 执行 |
-| 图形与交互 | Codex | 中文界面、飞出与碰撞动画、事件回放测试 | 40 项阶段测试通过，三关鼠标事件流程完成 | 本人实际试玩待完成 |
+| 图形与交互 | Codex | 中文界面、飞出与碰撞动画、事件回放测试 | 40 项阶段测试通过，三关鼠标事件流程完成 | 后续本人提供了三关通关截图，均未使用提示 |
 | 画面检查和修正 | Codex | 读取程序截图检查布局与图标 | 发现勾号变方框，改为线段绘制；最终 {summary['tests']} 项测试通过 | 不把 AI 修正记作学生手工修正 |
 
 原始开发记录见 `aigc_log.md`。本次明确遇到的问题包括正式页登录拦截、命令行嵌套引号错误、第一候选关方向不全、结果图标缺字；没有沿用他人博客中的调试经历。
@@ -201,7 +245,7 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 
 补充检查包括 625 种 2×2 棋盘的独立算法核对、45 个不同种子生成关卡的完整解序列验证，以及 {len(replay['actions'])} 次 pygame 事件回放。源码和打包 EXE 都在本机 Windows SDL 图形驱动中启动成功。
 
-证据文件：`evidence/test_output.txt`、`test_summary.json`、`ui_replay.json`、`source_smoke.json`、`exe_smoke.json`。这些是本地自动验证结果，其他机器兼容性和本人试玩需要单独确认。
+自动验证证据：`evidence/test_output.txt`、`test_summary.json`、`ui_replay.json`、`source_smoke.json`、`exe_smoke.json`。本人通关证据：`evidence/manual_playtest.json` 与 `docs/images/manual/` 中的三张原图。本人另外确认 T05 失败重试、T06 中途重开测试均正常；该两项手动结果记录为文字确认。其他机器兼容性尚未实测。
 
 ## 六、PSP 时间记录
 
@@ -211,13 +255,19 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 
 “AIGC 辅助开发记录”仅计入查看/整理 AI 使用过程的独立时间，避免与编码和测试重复统计。差异分析需在填入实际值后完成，不能直接套用他人的时间。
 
+其中“测试与修改”目前记录的是本人本次试玩约 2 分钟，即约 0.0333 小时；按此记录与 0.75 小时建议预算计算，差异约为 -0.7167 小时。当前只统计本人已确认的试玩投入，不包含 AI 自动化测试执行，也不代表整个项目总共只用 2 分钟；其他阶段待本人补充。
+
 ## 七、心得体会
 
 从本次实现可以得到三个具体认识：第一，路径判断中的“检查到边缘”是规则正确性的关键，不能以相邻格为空代替；第二，逻辑与界面分离后，自动化测试可以直接检查规则和状态，事件回放再补充交互验证；第三，逻辑通过不等于显示正确，结果图标缺字就是通过实际画面才发现的问题。
 
 AIGC 在需求拆分、代码实现、构造测试和整理文档方面提供了帮助；生成结果仍需要证据检验。本项目记录了真实发现和修改，也保留了多次 Git 提交，便于查看各阶段的变化。
 
-**本人补充区（发布前填写）**：实际试玩了哪些关卡、是否使用提示、最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。当前不代写尚未发生的个人体验。
+本人提供的截图表明三个关卡均已通过，提示次数均为 0；第一关显示剩余 2 次机会，另外两关为 3 次。
+
+本人另确认失败重试和中途重开均正常，本次试玩共约 2 分钟。
+
+**本人补充区（发布前填写）**：最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。主观体验待本人补充。
 
 ## 八、运行与提交说明
 

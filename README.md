@@ -103,4 +103,4 @@ evidence/                  测试日志、事件回放、启动验证
 - 实际 AI 作用、修正与验证：[aigc_log.md](aigc_log.md)。
 - GitHub 已发布至 [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game)，原有开发提交历史完整保留；公开文件及图片的核验记录见 `evidence/github_publication.json`（记录的是其中标明的提交快照）。博客园发布和班级作业提交尚未完成。
 
-学生需按正式要求亲自试玩三关、理解代码，并按真实经历补充 PSP 与心得。
+本人已提供三关通关截图，均未使用提示；界面分别显示 8 秒、12 秒、18 秒。原始图片见 `docs/images/manual/`，记录见 [测试报告](docs/test_report.md)。本人另确认失败重试和中途重开均正常，并报告包含熟悉规则、重试与截图的本次试玩约 2 分钟，已写入 PSP。其他阶段个人耗时与心得仍需补充。

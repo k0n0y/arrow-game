@@ -42,7 +42,7 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 </tbody>
 </table>
 <blockquote>
-<p>本稿记录本次 Codex 辅助开发及本地验证结果。发布博客前需本人试玩、填写真实 PSP 时间并补充个人心得；不将自动化验证写成本人试玩。</p>
+<p>本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。本人三关试玩结果已补充；发布博客前仍需填写真实 PSP 时间并补充个人心得。</p>
 </blockquote>
 <h2 id="_1">一、项目展示</h2>
 <p>本项目采用 Python + pygame-ce，实现基础单格箭头玩法。所有界面元素、箭头和关卡均由本项目代码生成，不使用原商业游戏素材。</p>
@@ -63,6 +63,52 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <h3 id="4-gif">4. 演示 GIF</h3>
 <p><img alt="操作演示" src="images/demo.gif" /></p>
 <p>以上为实际 pygame 程序通过脚本投递鼠标事件后的渲染结果。GIF 对部分中间操作进行了省略并调整播放节奏，界面计时来自模拟步长，不作为个人试玩速度或开发耗时。</p>
+<h3 id="5">5. 本人实际试玩</h3>
+<p>以下是本人提供的游戏窗口截图，与上方自动回放截图分别保存。材料收到日期为 2026-09-19。</p>
+<table>
+<thead>
+<tr>
+<th>关卡</th>
+<th style="text-align: right;">界面显示用时</th>
+<th style="text-align: right;">点击次数</th>
+<th style="text-align: right;">提示次数</th>
+<th>剩余机会</th>
+<th>界面结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · 初见方向</td>
+<td style="text-align: right;">8 秒</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td>2/3</td>
+<td>本关通过</td>
+</tr>
+<tr>
+<td>2 · 交错之间</td>
+<td style="text-align: right;">12 秒</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0</td>
+<td>3/3</td>
+<td>本关通过</td>
+</tr>
+<tr>
+<td>3 · 顺序的答案</td>
+<td style="text-align: right;">18 秒</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td>3/3</td>
+<td>全部通关</td>
+</tr>
+</tbody>
+</table>
+<p>三关均有通关结果截图，提示次数均为 0。第一关显示剩余 2 次机会，第二、三关各剩余 3 次机会。</p>
+<p><img alt="本人试玩：第 1 关通关截图" src="images/manual/level_1_clear.png" /></p>
+<p><img alt="本人试玩：第 2 关通关截图" src="images/manual/level_2_clear.png" /></p>
+<p><img alt="本人试玩：第 3 关通关截图" src="images/manual/level_3_clear.png" /></p>
+<p>三关界面计时合计 38 秒。这不包含启动、阅读规则、重复尝试、截图整理等总用时，不能直接作为 PSP 的测试与修改耗时。</p>
+<p>本人随后确认：失误机会耗尽后的重新挑战，以及游戏中途重新开始恢复棋盘和 3 次机会，两项测试均正常。本次完整试玩（包括熟悉规则、重试与截图）实际投入约 2 分钟，按本人估算记录。</p>
 <h2 id="_2">二、项目简介</h2>
 <h3 id="_3">游戏规则</h3>
 <ol>
@@ -170,7 +216,7 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <td>Codex</td>
 <td>中文界面、飞出与碰撞动画、事件回放测试</td>
 <td>40 项阶段测试通过，三关鼠标事件流程完成</td>
-<td>本人实际试玩待完成</td>
+<td>后续本人提供了三关通关截图，均未使用提示</td>
 </tr>
 <tr>
 <td>画面检查和修正</td>
@@ -244,7 +290,7 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 </tbody>
 </table>
 <p>补充检查包括 625 种 2×2 棋盘的独立算法核对、45 个不同种子生成关卡的完整解序列验证，以及 64 次 pygame 事件回放。源码和打包 EXE 都在本机 Windows SDL 图形驱动中启动成功。</p>
-<p>证据文件：<code>evidence/test_output.txt</code>、<code>test_summary.json</code>、<code>ui_replay.json</code>、<code>source_smoke.json</code>、<code>exe_smoke.json</code>。这些是本地自动验证结果，其他机器兼容性和本人试玩需要单独确认。</p>
+<p>自动验证证据：<code>evidence/test_output.txt</code>、<code>test_summary.json</code>、<code>ui_replay.json</code>、<code>source_smoke.json</code>、<code>exe_smoke.json</code>。本人通关证据：<code>evidence/manual_playtest.json</code> 与 <code>docs/images/manual/</code> 中的三张原图。本人另外确认 T05 失败重试、T06 中途重开测试均正常；该两项手动结果记录为文字确认。其他机器兼容性尚未实测。</p>
 <h2 id="psp">六、PSP 时间记录</h2>
 <p>以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际耗时应由本人按真实参与情况填写；AI 执行时间不等于学生本人开发时间。</p>
 <table>
@@ -296,8 +342,8 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <tr>
 <td>测试与修改</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">约 0.0333（本次本人试玩约 2 分钟）</td>
+<td style="text-align: right;">约 -0.7167（按已记录时间）</td>
 </tr>
 <tr>
 <td>README 与博客撰写</td>
@@ -308,16 +354,19 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <tr>
 <td>合计</td>
 <td style="text-align: right;"><strong>5.25</strong></td>
-<td style="text-align: right;"><strong>待本人填写</strong></td>
-<td style="text-align: right;"><strong>待计算</strong></td>
+<td style="text-align: right;"><strong>已确认约 0.0333，其余待填写</strong></td>
+<td style="text-align: right;"><strong>待其余阶段填写后计算</strong></td>
 </tr>
 </tbody>
 </table>
 <p>“AIGC 辅助开发记录”仅计入查看/整理 AI 使用过程的独立时间，避免与编码和测试重复统计。差异分析需在填入实际值后完成，不能直接套用他人的时间。</p>
+<p>其中“测试与修改”目前记录的是本人本次试玩约 2 分钟，即约 0.0333 小时；按此记录与 0.75 小时建议预算计算，差异约为 -0.7167 小时。当前只统计本人已确认的试玩投入，不包含 AI 自动化测试执行，也不代表整个项目总共只用 2 分钟；其他阶段待本人补充。</p>
 <h2 id="_12">七、心得体会</h2>
 <p>从本次实现可以得到三个具体认识：第一，路径判断中的“检查到边缘”是规则正确性的关键，不能以相邻格为空代替；第二，逻辑与界面分离后，自动化测试可以直接检查规则和状态，事件回放再补充交互验证；第三，逻辑通过不等于显示正确，结果图标缺字就是通过实际画面才发现的问题。</p>
 <p>AIGC 在需求拆分、代码实现、构造测试和整理文档方面提供了帮助；生成结果仍需要证据检验。本项目记录了真实发现和修改，也保留了多次 Git 提交，便于查看各阶段的变化。</p>
-<p><strong>本人补充区（发布前填写）</strong>：实际试玩了哪些关卡、是否使用提示、最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。当前不代写尚未发生的个人体验。</p>
+<p>本人提供的截图表明三个关卡均已通过，提示次数均为 0；第一关显示剩余 2 次机会，另外两关为 3 次。</p>
+<p>本人另确认失败重试和中途重开均正常，本次试玩共约 2 分钟。</p>
+<p><strong>本人补充区（发布前填写）</strong>：最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。主观体验待本人补充。</p>
 <h2 id="_13">八、运行与提交说明</h2>
 <p>可执行版双击 <code>ArrowGame.exe</code>。源码版：</p>
 <pre><code class="language-powershell">py -3.13 -m venv .venv

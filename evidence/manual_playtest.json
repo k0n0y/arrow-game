@@ -1,0 +1,64 @@
+{
+  "source": "student-provided original screenshots in this conversation",
+  "received_date": "2026-09-19",
+  "three_levels_cleared": true,
+  "levels": [
+    {
+      "level": 1,
+      "name": "初见方向",
+      "displayed_seconds": 8,
+      "clicks": 12,
+      "hints": 0,
+      "remaining_lives": 2,
+      "result": "cleared",
+      "screenshot": "docs/images/manual/level_1_clear.png",
+      "sha256": "ca0aed5ebb1cc877f068155de8b9644fd024179638a544fd621a9b0fdba339ce",
+      "pixels": [
+        1766,
+        1271
+      ]
+    },
+    {
+      "level": 2,
+      "name": "交错之间",
+      "displayed_seconds": 12,
+      "clicks": 18,
+      "hints": 0,
+      "remaining_lives": 3,
+      "result": "cleared",
+      "screenshot": "docs/images/manual/level_2_clear.png",
+      "sha256": "73b2eda3cca9e8465b3e3dad1d5e2d9bb8b6671d6aef32056db945b9d83c4aa8",
+      "pixels": [
+        1772,
+        1276
+      ]
+    },
+    {
+      "level": 3,
+      "name": "顺序的答案",
+      "displayed_seconds": 18,
+      "clicks": 27,
+      "hints": 0,
+      "remaining_lives": 3,
+      "result": "all_clear",
+      "screenshot": "docs/images/manual/level_3_clear.png",
+      "sha256": "0539c20cdb3b2b504292a01af70ca504537439b08cb5d840ffa995e2ebfe2e16",
+      "pixels": [
+        1768,
+        1271
+      ]
+    }
+  ],
+  "total_displayed_seconds": 38,
+  "time_scope": "Sum of the three in-game displayed timers only; not total personal testing or PSP time.",
+  "manual_failure_retry": "passed; confirmed by student",
+  "manual_midgame_restart": "passed; confirmed by student",
+  "personal_testing_minutes": 2,
+  "personal_testing_time_precision": "approximately; student-reported estimate",
+  "confirmation": {
+    "received_date": "2026-09-19",
+    "failure_and_restart_answer": "已测试，两项都正常",
+    "personal_testing_time_answer": "2分钟",
+    "time_scope": "This personal playtest session, including familiarization, retries and screenshots; other development phases remain unreported."
+  }
+}
