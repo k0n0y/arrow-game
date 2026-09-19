@@ -93,7 +93,8 @@ JUnit 记录的测试套件耗时为 {summary['suite_time_seconds']:.3f} 秒；�
 (ROOT / "docs/test_report.md").write_text(report, encoding="utf-8")
 
 psp = (ROOT / "docs/psp.md").read_text(encoding="utf-8")
-psp_table = psp[psp.index("| 任务"):psp.index("\n\n说明")]
+psp_section = psp.split("\n", 1)[1].split("\n## 已收到的试玩证据", 1)[0].strip()
+psp_section = psp_section.replace("\n## ", "\n### ")
 blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 
 | 项目 | 内容 |
@@ -104,7 +105,7 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 | 学号 | 102401314 |
 | GitHub 仓库 | [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game) |
 
-> 本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。PSP 已按本人要求补充回忆估算，其中试玩约 2 分钟由本人报告，其他阶段为助手估计；个人心得仍可结合实际理解补充。
+> 本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。PSP 采用用户选用的 152 分钟参考估算，未逐项计时，其中试玩约 2 分钟由本人报告，其余时间及活动完成情况待按实际经历核对；个人心得仍可结合实际理解补充。
 
 ## 一、项目展示
 
@@ -249,15 +250,7 @@ blog = f"""# 一箭又一箭：使用 Python 与 Codex 完成箭头解谜游戏
 
 ## 六、PSP 时间记录
 
-以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际栏按本人要求采用回忆估算：试玩约 2 分钟由本人报告，其余阶段为 Codex 根据可见参与过程估计，均未进行精确计时。
-
-{psp_table}
-
-需求理解估计 10 分钟，AIGC 沟通与记录估计 10 分钟，GitHub 仓库创建和提交材料沟通归入材料整理，估计 5 分钟；三项不重复计算。加上本人报告的试玩约 2 分钟，个人参与合计估计约 27 分钟（0.45 小时）。
-
-Python 学习、界面实现、路径逻辑和关卡设计四项暂估个人投入为 0：这些环节本次主要由 Codex 执行，对话中未见本人独立操作记录。如实际存在额外学习或修改，应继续补入。
-
-原建议预算为完整开发过程预留 5.25 小时，实际估算仅计个人参与，约 -4.80 小时的差异包含 AI 分工与估算口径变化，不代表精确的效率提升。AI 自动运行、跨日等待及尚未进行的博客发布不计入；后续实际参与需继续追加。详细依据见 `evidence/psp_estimate.json`。
+{psp_section}
 
 ## 七、心得体会
 

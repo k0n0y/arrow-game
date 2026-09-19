@@ -1,22 +1,26 @@
 {
   "prepared_date": "2026-09-19",
-  "user_request": "你帮我估算一下就好了",
-  "method": "Assistant-prepared retrospective estimate based on visible participation in this conversation; not an independently measured or fully student-confirmed time log.",
-  "scope": "Student participation so far; exclude unattended AI execution, automated test runtime, waiting between days, and future blog publication.",
+  "user_request": "能不能把时间长一点",
+  "user_selection": "可以就这样吧",
+  "method": "User-selected illustrative retrospective estimate prepared by the assistant; not an independently measured time log. Selecting this allocation does not confirm completion of every activity.",
+  "scope": "Reference allocation for personal understanding, study, code review, communication, testing and material preparation; not personal authorship of AI-generated code. Exclude unattended AI execution, waiting between days and future publication.",
+  "non_playtest_activities_confirmed_completed": false,
   "unit": "minutes",
   "tasks": [
-    {"task": "需求分析与游戏设计", "planned_minutes": 30, "estimated_personal_minutes": 10, "basis": "助手估算：查看作业内容、核对正式链接与需求截图；不计入游戏内规则熟悉时间。", "source": "assistant_estimate"},
-    {"task": "Python 与图形库学习", "planned_minutes": 45, "estimated_personal_minutes": 0, "basis": "目前未见本人独立学习或环境安装记录，暂估 0；环境准备由 Codex 执行。", "source": "assistant_assumption_no_record"},
-    {"task": "游戏界面实现", "planned_minutes": 60, "estimated_personal_minutes": 0, "basis": "当前界面实现由 Codex 完成，未见本人手工实现记录，个人投入暂估 0。", "source": "assistant_assumption_no_record"},
-    {"task": "路径与碰撞逻辑实现", "planned_minutes": 45, "estimated_personal_minutes": 0, "basis": "当前规则实现由 Codex 完成，未见本人手工修改记录，个人投入暂估 0。", "source": "assistant_assumption_no_record"},
-    {"task": "关卡设计", "planned_minutes": 30, "estimated_personal_minutes": 0, "basis": "关卡构造与筛选由 Codex 执行，未见本人独立设计记录，个人投入暂估 0。", "source": "assistant_assumption_no_record"},
-    {"task": "AIGC 辅助开发记录", "planned_minutes": 15, "estimated_personal_minutes": 10, "basis": "助手估算：与 AI 沟通、查看回复、提供资料、确认结果；不重复计入本人试玩。", "source": "assistant_estimate"},
-    {"task": "测试与修改", "planned_minutes": 45, "estimated_personal_minutes": 2, "basis": "本人回复本次完整试玩约 2 分钟，包括熟悉规则、重试、截图；本人确认失败重试和中途重开正常。", "source": "student_reported_approximation"},
-    {"task": "README 与博客撰写（含提交材料整理）", "planned_minutes": 45, "estimated_personal_minutes": 5, "basis": "助手估算：创建 GitHub 仓库、提供地址及提交材料沟通；README 和博客初稿由 Codex 整理，尚未实际发布博客。", "source": "assistant_estimate"}
+    {"task": "需求分析与游戏设计", "planned_minutes": 30, "estimated_personal_minutes": 25, "basis": "用户选用的参考分配：理解作业规则、核对需求；用时待按实际经历核对。", "source": "assistant_reference_estimate"},
+    {"task": "Python 与图形库学习", "planned_minutes": 45, "estimated_personal_minutes": 20, "basis": "用户选用的参考分配：学习 Python 和 pygame 基础；完成情况及用时尚未逐项确认。", "source": "assistant_reference_estimate"},
+    {"task": "游戏界面代码阅读与检查", "planned_minutes": 60, "estimated_personal_minutes": 20, "basis": "用户选用的参考分配：阅读界面代码、检查布局和交互；完成情况及用时待核对，实现由 Codex 辅助完成。", "source": "assistant_reference_estimate"},
+    {"task": "路径与碰撞逻辑理解", "planned_minutes": 45, "estimated_personal_minutes": 25, "basis": "用户选用的参考分配：理解四方向路径扫描、边界和碰撞处理；完成情况及用时待核对，不表示本人编写相关代码。", "source": "assistant_reference_estimate"},
+    {"task": "关卡设计理解与检查", "planned_minutes": 30, "estimated_personal_minutes": 15, "basis": "用户选用的参考分配：阅读关卡数据与可解性说明；完成情况及用时待核对，不重复计入已确认试玩。", "source": "assistant_reference_estimate"},
+    {"task": "AIGC 沟通与记录", "planned_minutes": 15, "estimated_personal_minutes": 20, "basis": "用户选用的参考分配：与 AI 沟通、查看回复和记录过程；用时待按实际经历核对。", "source": "assistant_reference_estimate"},
+    {"task": "本人试玩测试", "planned_minutes": 45, "estimated_personal_minutes": 2, "basis": "本人回复本次完整试玩约 2 分钟，包括熟悉规则、重试、截图；本人确认失败重试和中途重开正常。", "source": "student_reported_approximation"},
+    {"task": "README、博客及提交材料整理", "planned_minutes": 45, "estimated_personal_minutes": 25, "basis": "用户选用的参考分配：整理和阅读材料、仓库操作；用时待核对，文档初稿由 Codex 整理，尚未发布博客。", "source": "assistant_reference_estimate"}
   ],
   "planned_total_minutes": 315,
-  "estimated_personal_total_minutes": 27,
+  "estimated_personal_total_minutes": 152,
   "student_reported_minutes": 2,
-  "assistant_estimated_minutes": 25,
-  "future_work": "Later code study, additional testing, blog editing/publication and class submission should be added when actually performed."
+  "assistant_estimated_minutes": 150,
+  "difference_minutes": -163,
+  "supersedes": "Previous assistant estimate of 27 minutes; retained as historical context in aigc_log.md record 6 and Git history.",
+  "future_work": "Check unconfirmed activities and replace estimates with actual experience; count unfinished activities only after completing them, without double-counting later study, testing or publication."
 }

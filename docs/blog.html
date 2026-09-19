@@ -42,7 +42,7 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 </tbody>
 </table>
 <blockquote>
-<p>本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。PSP 已按本人要求补充回忆估算，其中试玩约 2 分钟由本人报告，其他阶段为助手估计；个人心得仍可结合实际理解补充。</p>
+<p>本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。PSP 采用用户选用的 152 分钟参考估算，未逐项计时，其中试玩约 2 分钟由本人报告，其余时间及活动完成情况待按实际经历核对；个人心得仍可结合实际理解补充。</p>
 </blockquote>
 <h2 id="_1">一、项目展示</h2>
 <p>本项目采用 Python + pygame-ce，实现基础单格箭头玩法。所有界面元素、箭头和关卡均由本项目代码生成，不使用原商业游戏素材。</p>
@@ -292,13 +292,14 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <p>补充检查包括 625 种 2×2 棋盘的独立算法核对、45 个不同种子生成关卡的完整解序列验证，以及 64 次 pygame 事件回放。源码和打包 EXE 都在本机 Windows SDL 图形驱动中启动成功。</p>
 <p>自动验证证据：<code>evidence/test_output.txt</code>、<code>test_summary.json</code>、<code>ui_replay.json</code>、<code>source_smoke.json</code>、<code>exe_smoke.json</code>。本人通关证据：<code>evidence/manual_playtest.json</code> 与 <code>docs/images/manual/</code> 中的三张原图。本人另外确认 T05 失败重试、T06 中途重开测试均正常；该两项手动结果记录为文字确认。其他机器兼容性尚未实测。</p>
 <h2 id="psp">六、PSP 时间记录</h2>
-<p>以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际栏按本人要求采用回忆估算：试玩约 2 分钟由本人报告，其余阶段为 Codex 根据可见参与过程估计，均未进行精确计时。</p>
+<p>本表由 Codex 提供参考数值，用户在查看各项分配后回复“可以就这样吧”，选用合计 <strong>152 分钟（约 2.53 小时）</strong> 的版本。<strong>耗时为事后回忆估算，未逐项计时；其中试玩约 2 分钟由本人报告，其余 150 分钟为助手提供、待按实际经历核对的参考估算。</strong></p>
+<p>预计值保留核心编码前制定的建议预算。参考估算覆盖个人需求理解、学习、代码阅读与检查、沟通、试玩和材料整理，不代表本人手工编写了 AI 生成的代码。选用数值不等于确认每项活动已经完成；尚未做过的活动应先完成再计入实际用时。AI 自动执行、跨日等待及尚未进行的后续博客发布不计入。</p>
 <table>
 <thead>
 <tr>
 <th>任务</th>
 <th style="text-align: right;">预计耗时（小时）</th>
-<th style="text-align: right;">实际耗时（小时，回忆估算）</th>
+<th style="text-align: right;">实际耗时（小时，参考估算待核对）</th>
 <th style="text-align: right;">差异（估算 − 预计）</th>
 </tr>
 </thead>
@@ -306,76 +307,78 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <tr>
 <td>需求分析与游戏设计</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">约 0.1667（10 分钟，助手估算）</td>
-<td style="text-align: right;">约 -0.3333</td>
+<td style="text-align: right;">约 0.4167（25 分钟）</td>
+<td style="text-align: right;">约 -0.0833</td>
 </tr>
 <tr>
 <td>Python 与图形库学习</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">暂估 0</td>
-<td style="text-align: right;">-0.75</td>
+<td style="text-align: right;">约 0.3333（20 分钟）</td>
+<td style="text-align: right;">约 -0.4167</td>
 </tr>
 <tr>
-<td>游戏界面实现</td>
+<td>游戏界面代码阅读与检查</td>
 <td style="text-align: right;">1.00</td>
-<td style="text-align: right;">暂估 0</td>
-<td style="text-align: right;">-1.00</td>
+<td style="text-align: right;">约 0.3333（20 分钟）</td>
+<td style="text-align: right;">约 -0.6667</td>
 </tr>
 <tr>
-<td>路径与碰撞逻辑实现</td>
+<td>路径与碰撞逻辑理解</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">暂估 0</td>
-<td style="text-align: right;">-0.75</td>
+<td style="text-align: right;">约 0.4167（25 分钟）</td>
+<td style="text-align: right;">约 -0.3333</td>
 </tr>
 <tr>
-<td>关卡设计</td>
+<td>关卡设计理解与检查</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">暂估 0</td>
-<td style="text-align: right;">-0.50</td>
+<td style="text-align: right;">约 0.2500（15 分钟）</td>
+<td style="text-align: right;">约 -0.2500</td>
 </tr>
 <tr>
-<td>AIGC 辅助开发记录</td>
+<td>AIGC 沟通与记录</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: right;">约 0.1667（10 分钟，助手估算）</td>
-<td style="text-align: right;">约 -0.0833</td>
+<td style="text-align: right;">约 0.3333（20 分钟）</td>
+<td style="text-align: right;">约 +0.0833</td>
 </tr>
 <tr>
-<td>测试与修改</td>
+<td>本人试玩测试</td>
 <td style="text-align: right;">0.75</td>
 <td style="text-align: right;">约 0.0333（2 分钟，本人报告）</td>
 <td style="text-align: right;">约 -0.7167</td>
 </tr>
 <tr>
-<td>README 与博客撰写（含提交材料整理）</td>
+<td>README、博客及提交材料整理</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">约 0.0833（5 分钟，助手估算）</td>
-<td style="text-align: right;">约 -0.6667</td>
+<td style="text-align: right;">约 0.4167（25 分钟）</td>
+<td style="text-align: right;">约 -0.3333</td>
 </tr>
 <tr>
 <td>合计</td>
 <td style="text-align: right;"><strong>5.25</strong></td>
-<td style="text-align: right;"><strong>约 0.45（27 分钟）</strong></td>
-<td style="text-align: right;"><strong>约 -4.80</strong></td>
+<td style="text-align: right;"><strong>约 2.5333（152 分钟）</strong></td>
+<td style="text-align: right;"><strong>约 -2.7167</strong></td>
 </tr>
 </tbody>
 </table>
-<p>需求理解估计 10 分钟，AIGC 沟通与记录估计 10 分钟，GitHub 仓库创建和提交材料沟通归入材料整理，估计 5 分钟；三项不重复计算。加上本人报告的试玩约 2 分钟，个人参与合计估计约 27 分钟（0.45 小时）。</p>
-<p>Python 学习、界面实现、路径逻辑和关卡设计四项暂估个人投入为 0：这些环节本次主要由 Codex 执行，对话中未见本人独立操作记录。如实际存在额外学习或修改，应继续补入。</p>
-<p>原建议预算为完整开发过程预留 5.25 小时，实际估算仅计个人参与，约 -4.80 小时的差异包含 AI 分工与估算口径变化，不代表精确的效率提升。AI 自动运行、跨日等待及尚未进行的博客发布不计入；后续实际参与需继续追加。详细依据见 <code>evidence/psp_estimate.json</code>。</p>
-<h2 id="_12">七、心得体会</h2>
+<p>说明：参考分配依次为 25、20、20、25、15、20、2、25 分钟，各项均大于 0，总计 152 分钟。小时数按分钟换算后保留四位小数，合计及差异使用原始分钟数计算。各项活动应互不重复计时。</p>
+<p>学习与代码检查四项描述的是本人可以开展的理解与核对工作，目前未有逐项完成记录；实现和自动化验证仍归于 Codex 辅助开发。其他阶段的参考数值也未经过个人计时验证。用户已确认的试玩时间保持为约 2 分钟。</p>
+<h3 id="_12">差异分析</h3>
+<p>原建议预算为完整开发流程预留了 5.25 小时。当前选用的参考分配为约 2.5333 小时，与预算相差约 -2.7167 小时（-163 分钟）。本次实现、自动测试和文档初稿由 AI 辅助完成，个人时间分配包含学习与阅读检查。两列的工作分工与估算口径不同，且参考值尚待核对，因此不能把差异当作实测的效率提升。</p>
+<p>估算依据及来源分类保存在 <code>evidence/psp_estimate.json</code>。</p>
+<h2 id="_13">七、心得体会</h2>
 <p>从本次实现可以得到三个具体认识：第一，路径判断中的“检查到边缘”是规则正确性的关键，不能以相邻格为空代替；第二，逻辑与界面分离后，自动化测试可以直接检查规则和状态，事件回放再补充交互验证；第三，逻辑通过不等于显示正确，结果图标缺字就是通过实际画面才发现的问题。</p>
 <p>AIGC 在需求拆分、代码实现、构造测试和整理文档方面提供了帮助；生成结果仍需要证据检验。本项目记录了真实发现和修改，也保留了多次 Git 提交，便于查看各阶段的变化。</p>
 <p>本人提供的截图表明三个关卡均已通过，提示次数均为 0；第一关显示剩余 2 次机会，另外两关为 3 次。</p>
 <p>本人另确认失败重试和中途重开均正常，本次试玩共约 2 分钟。</p>
 <p><strong>本人补充区（发布前填写）</strong>：最容易误判的地方、亲自理解或修改了哪段代码，以及最终学到什么。主观体验待本人补充。</p>
-<h2 id="_13">八、运行与提交说明</h2>
+<h2 id="_14">八、运行与提交说明</h2>
 <p>可执行版双击 <code>ArrowGame.exe</code>。源码版：</p>
 <pre><code class="language-powershell">py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe ArrowGame.py
 </code></pre>
 <p>GitHub 已发布至 <a href="https://github.com/k0n0y/arrow-game">k0n0y/arrow-game</a>，并保留原有五次开发提交。发布博客时仍需要将图片上传至博客园并替换本地相对路径；博客园发布与班级提交尚未完成。</p>
-<h3 id="_14">资料与素材说明</h3>
+<h3 id="_15">资料与素材说明</h3>
 <ul>
 <li>作业规则来自本文首表中的正式作业页及用户提供的完整截图。</li>
 <li>初始背景参考为 <a href="https://www.cnblogs.com/PIG1/p/23001643">PIG— 的作业博客</a>，未复制其源码、截图或时间记录。</li>
