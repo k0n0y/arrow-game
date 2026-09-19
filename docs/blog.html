@@ -42,7 +42,7 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 </tbody>
 </table>
 <blockquote>
-<p>本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。本人三关试玩结果已补充；发布博客前仍需填写真实 PSP 时间并补充个人心得。</p>
+<p>本稿记录 Codex 辅助开发、本地自动测试和本人提供的三关通关截图。PSP 已按本人要求补充回忆估算，其中试玩约 2 分钟由本人报告，其他阶段为助手估计；个人心得仍可结合实际理解补充。</p>
 </blockquote>
 <h2 id="_1">一、项目展示</h2>
 <p>本项目采用 Python + pygame-ce，实现基础单格箭头玩法。所有界面元素、箭头和关卡均由本项目代码生成，不使用原商业游戏素材。</p>
@@ -292,75 +292,76 @@ code{font-family:Consolas,monospace}blockquote{margin:20px 0;padding:12px 20px;b
 <p>补充检查包括 625 种 2×2 棋盘的独立算法核对、45 个不同种子生成关卡的完整解序列验证，以及 64 次 pygame 事件回放。源码和打包 EXE 都在本机 Windows SDL 图形驱动中启动成功。</p>
 <p>自动验证证据：<code>evidence/test_output.txt</code>、<code>test_summary.json</code>、<code>ui_replay.json</code>、<code>source_smoke.json</code>、<code>exe_smoke.json</code>。本人通关证据：<code>evidence/manual_playtest.json</code> 与 <code>docs/images/manual/</code> 中的三张原图。本人另外确认 T05 失败重试、T06 中途重开测试均正常；该两项手动结果记录为文字确认。其他机器兼容性尚未实测。</p>
 <h2 id="psp">六、PSP 时间记录</h2>
-<p>以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际耗时应由本人按真实参与情况填写；AI 执行时间不等于学生本人开发时间。</p>
+<p>以下预计值在读取正式截图后、核心编码前制定，单位为小时。实际栏按本人要求采用回忆估算：试玩约 2 分钟由本人报告，其余阶段为 Codex 根据可见参与过程估计，均未进行精确计时。</p>
 <table>
 <thead>
 <tr>
 <th>任务</th>
 <th style="text-align: right;">预计耗时（小时）</th>
-<th style="text-align: right;">实际耗时（小时）</th>
-<th style="text-align: right;">差异（实际 − 预计）</th>
+<th style="text-align: right;">实际耗时（小时，回忆估算）</th>
+<th style="text-align: right;">差异（估算 − 预计）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>需求分析与游戏设计</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">约 0.1667（10 分钟，助手估算）</td>
+<td style="text-align: right;">约 -0.3333</td>
 </tr>
 <tr>
 <td>Python 与图形库学习</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">暂估 0</td>
+<td style="text-align: right;">-0.75</td>
 </tr>
 <tr>
 <td>游戏界面实现</td>
 <td style="text-align: right;">1.00</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">暂估 0</td>
+<td style="text-align: right;">-1.00</td>
 </tr>
 <tr>
 <td>路径与碰撞逻辑实现</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">暂估 0</td>
+<td style="text-align: right;">-0.75</td>
 </tr>
 <tr>
 <td>关卡设计</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">暂估 0</td>
+<td style="text-align: right;">-0.50</td>
 </tr>
 <tr>
 <td>AIGC 辅助开发记录</td>
 <td style="text-align: right;">0.25</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">约 0.1667（10 分钟，助手估算）</td>
+<td style="text-align: right;">约 -0.0833</td>
 </tr>
 <tr>
 <td>测试与修改</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">约 0.0333（本次本人试玩约 2 分钟）</td>
-<td style="text-align: right;">约 -0.7167（按已记录时间）</td>
+<td style="text-align: right;">约 0.0333（2 分钟，本人报告）</td>
+<td style="text-align: right;">约 -0.7167</td>
 </tr>
 <tr>
-<td>README 与博客撰写</td>
+<td>README 与博客撰写（含提交材料整理）</td>
 <td style="text-align: right;">0.75</td>
-<td style="text-align: right;">待本人填写</td>
-<td style="text-align: right;">待计算</td>
+<td style="text-align: right;">约 0.0833（5 分钟，助手估算）</td>
+<td style="text-align: right;">约 -0.6667</td>
 </tr>
 <tr>
 <td>合计</td>
 <td style="text-align: right;"><strong>5.25</strong></td>
-<td style="text-align: right;"><strong>已确认约 0.0333，其余待填写</strong></td>
-<td style="text-align: right;"><strong>待其余阶段填写后计算</strong></td>
+<td style="text-align: right;"><strong>约 0.45（27 分钟）</strong></td>
+<td style="text-align: right;"><strong>约 -4.80</strong></td>
 </tr>
 </tbody>
 </table>
-<p>“AIGC 辅助开发记录”仅计入查看/整理 AI 使用过程的独立时间，避免与编码和测试重复统计。差异分析需在填入实际值后完成，不能直接套用他人的时间。</p>
-<p>其中“测试与修改”目前记录的是本人本次试玩约 2 分钟，即约 0.0333 小时；按此记录与 0.75 小时建议预算计算，差异约为 -0.7167 小时。当前只统计本人已确认的试玩投入，不包含 AI 自动化测试执行，也不代表整个项目总共只用 2 分钟；其他阶段待本人补充。</p>
+<p>需求理解估计 10 分钟，AIGC 沟通与记录估计 10 分钟，GitHub 仓库创建和提交材料沟通归入材料整理，估计 5 分钟；三项不重复计算。加上本人报告的试玩约 2 分钟，个人参与合计估计约 27 分钟（0.45 小时）。</p>
+<p>Python 学习、界面实现、路径逻辑和关卡设计四项暂估个人投入为 0：这些环节本次主要由 Codex 执行，对话中未见本人独立操作记录。如实际存在额外学习或修改，应继续补入。</p>
+<p>原建议预算为完整开发过程预留 5.25 小时，实际估算仅计个人参与，约 -4.80 小时的差异包含 AI 分工与估算口径变化，不代表精确的效率提升。AI 自动运行、跨日等待及尚未进行的博客发布不计入；后续实际参与需继续追加。详细依据见 <code>evidence/psp_estimate.json</code>。</p>
 <h2 id="_12">七、心得体会</h2>
 <p>从本次实现可以得到三个具体认识：第一，路径判断中的“检查到边缘”是规则正确性的关键，不能以相邻格为空代替；第二，逻辑与界面分离后，自动化测试可以直接检查规则和状态，事件回放再补充交互验证；第三，逻辑通过不等于显示正确，结果图标缺字就是通过实际画面才发现的问题。</p>
 <p>AIGC 在需求拆分、代码实现、构造测试和整理文档方面提供了帮助；生成结果仍需要证据检验。本项目记录了真实发现和修改，也保留了多次 Git 提交，便于查看各阶段的变化。</p>

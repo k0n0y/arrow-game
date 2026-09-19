@@ -88,7 +88,7 @@ docs/blog.md               博客园 Markdown 稿
 docs/blog.html             本地阅读预览
 docs/test_report.md        测试结果与证据边界
 docs/code_guide.md         核心代码讲解与答辩准备
-docs/psp.md                PSP 预算与本人实际耗时填写表
+docs/psp.md                PSP 预算与个人参与时间回忆估算
 docs/submission_checklist.md  发布与本人验收清单
 aigc_log.md                真实开发阶段记录
 evidence/                  测试日志、事件回放、启动验证
@@ -103,4 +103,4 @@ evidence/                  测试日志、事件回放、启动验证
 - 实际 AI 作用、修正与验证：[aigc_log.md](aigc_log.md)。
 - GitHub 已发布至 [k0n0y/arrow-game](https://github.com/k0n0y/arrow-game)，原有开发提交历史完整保留；公开文件及图片的核验记录见 `evidence/github_publication.json`（记录的是其中标明的提交快照）。博客园发布和班级作业提交尚未完成。
 
-本人已提供三关通关截图，均未使用提示；界面分别显示 8 秒、12 秒、18 秒。原始图片见 `docs/images/manual/`，记录见 [测试报告](docs/test_report.md)。本人另确认失败重试和中途重开均正常，并报告包含熟悉规则、重试与截图的本次试玩约 2 分钟，已写入 PSP。其他阶段个人耗时与心得仍需补充。
+本人已提供三关通关截图，均未使用提示；界面分别显示 8 秒、12 秒、18 秒。原始图片见 `docs/images/manual/`，记录见 [测试报告](docs/test_report.md)。本人另确认失败重试和中途重开均正常，并报告本次完整试玩约 2 分钟。PSP 已按本人要求补为回忆估算，个人参与合计约 27 分钟，其中试玩时间由本人报告、其他时间由助手估计；个人心得与后续实际投入可继续补充。
